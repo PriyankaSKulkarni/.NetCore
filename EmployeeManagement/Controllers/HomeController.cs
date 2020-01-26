@@ -14,10 +14,10 @@ namespace EmployeeManagement.Controllers
     
     public class HomeController : Controller
     {
-        private IEmployeeRepository _employeeRepository;
+        private IRepository<Employee> _employeeRepository;
         private readonly IHostingEnvironment hostingEnvironment;
 
-        public HomeController(IEmployeeRepository employeeRepository,IHostingEnvironment hostingEnvironment)
+        public HomeController(IRepository<Employee> employeeRepository,IHostingEnvironment hostingEnvironment)
         {
             _employeeRepository = employeeRepository;
             this.hostingEnvironment = hostingEnvironment;

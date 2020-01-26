@@ -26,6 +26,7 @@ namespace EmployeeManagement
         {
             services.AddDbContextPool<EmployeeDbContext>(option => option.UseSqlServer(_config.GetConnectionString("EmployeeDBConnection")));
             services.AddMvc();
+            services.AddScoped( typeof(IRepository<>), typeof(GenericRepository<>)) ;
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
 

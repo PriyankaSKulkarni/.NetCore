@@ -11,12 +11,12 @@ namespace EmployeeTest
     [TestClass]
     public class EmployeeTest
     {
-        private Mock<IEmployeeRepository> _mockEmployeeRepository;
+        private Mock<IRepository<Employee>> _mockEmployeeRepository;
         private readonly Mock<IHostingEnvironment> hostingEnvironment;
 
         public EmployeeTest()
         {
-            _mockEmployeeRepository = new Mock<IEmployeeRepository>();
+            _mockEmployeeRepository = new Mock<IRepository<Employee>>();
             this.hostingEnvironment = new Mock<IHostingEnvironment>();
         }
         [TestMethod]
