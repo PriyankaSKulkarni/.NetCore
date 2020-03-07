@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EmployeeManagement.Helper;
 using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,19 +29,25 @@ namespace EmployeeManagement
             services.AddMvc();
             services.AddScoped( typeof(IRepository<>), typeof(GenericRepository<>)) ;
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            //services.AddScoped <IBlobService, BlobService>();
+            //services.AddScoped<IQueueService, QueueService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseWelcomePage();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
             else {
+                app.UseHsts();
                 app.UseExceptionHandler("/Error");
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
+
+            app.UseHttpsRedirection();
 
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
